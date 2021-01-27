@@ -1,7 +1,33 @@
-const Query = {
-	hello: () => 'Hello',
+import tournammentResolver from './tournammentResolver.js';
+import commandResolver from './commandResover.js';
+import playerResolver from './playerResolver.js';
+import userResolver from './usersResolver.js';
+
+const hello = {
+	Query: {
+		hello: () => 'Hello',
+	}
 };
 
-export default {
-	Query: Query,
+/*
+ * Query: {
+ * ...tournammentResolver.Query,
+ * ...hello.Query
+ * },
+ * Mutation: {
+ * ...tournammentResolver.Mutation,
+ * ...hello.Mutation
+ * },
+ */
+
+const resolver = {
+	...tournammentResolver,
+	...commandResolver,
+	...playerResolver,
+	...userResolver,
+	...hello
 };
+
+console.log(resolver.Query);
+
+export default resolver;

@@ -1,6 +1,6 @@
 const tournament = (sequelize, DataTypes) => {
 	const Tournament = sequelize.define(
-'player',
+'tournament',
 {
 		id: {
 			type: DataTypes.BIGINT,
@@ -8,53 +8,55 @@ const tournament = (sequelize, DataTypes) => {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		Title: {
+		title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		Caption: {
+		caption: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		Prize: {
+		prize: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		Game: {
+		game: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		CommandSize: {
+		commandSize: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        // notEmpty: true,
       },
     },
-    StartDate: {
-      type: DataTypes.Date,
-      allowNull: false,
+    startDate: {
+      type: DataTypes.STRING,
+      // allowNull: false,
       validate: {
-        notEmpty: true,
+        // notEmpty: true,
+        isDate: true
       },
     },
-    EndDate: {
-      type: DataTypes.Date,
-      allowNull: false,
+    endDate: {
+      type: DataTypes.STRING,
+      // allowNull: false,
       validate: {
-        notEmpty: true,
+        // notEmpty: true,
+        isDate: true
       },
 		},
 	}

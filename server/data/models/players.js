@@ -9,35 +9,35 @@ const player = (sequelize, DataTypes) => {
 			autoIncrement: true,
 			allowNull: false,
 		},
-    Steam: {
+    steam: {
       validate: {
         notEmpty: true,
       },
       type: DataTypes.STRING,
       allowNull: false,
     },
-		Name: {
+		name: {
       validate: {
         notEmpty: true,
       },
       type: DataTypes.STRING,
       allowNull: false,
 		},
-		University: {
+		university: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		Faculty: {
+		faculty: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
-		Group: {
+		group: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

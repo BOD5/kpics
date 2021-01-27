@@ -1,6 +1,6 @@
 const command = (sequelize, DataTypes) => {
 	const Command = sequelize.define(
-'player',
+'command',
 {
 		id: {
 			type: DataTypes.BIGINT,
@@ -8,19 +8,27 @@ const command = (sequelize, DataTypes) => {
 			autoIncrement: true,
 			primaryKey: true
 		},
-		Title: {
+		title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
 		},
+		capitan: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		}
 	}
 );
 
 	Command.associate = (models) => {
 		Command.hasMany(models.player);
-		Command.belongsTo(models.tournament);
+		Command.belongsTo(models.tournamment);
+		Command.belongsTo(models.user);
 	};
 
 	return Command;
