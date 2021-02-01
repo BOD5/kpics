@@ -1,8 +1,9 @@
 import pkg from 'sequelize';
-import tournamments from './tournaments.js';
-import players from './players.js';
-import commands from './commands.js';
-import users from './users.js';
+import tournaments from './tournaments/model.js';
+import players from './players/model.js';
+import commands from './commands/model.js';
+import users from './users/model.js';
+import playerCommands from './playerCommand.js';
 
 const { Sequelize, DataTypes } = pkg;
 
@@ -11,9 +12,9 @@ const sequelize = new Sequelize(
 	'root',
 	'1111',
 	{
-	host: 'localhost',
-	dialect: 'mysql'
-}
+		host: 'localhost',
+		dialect: 'mysql'
+	}
 );
 
 console.info('Setup - connecting database');
@@ -30,18 +31,19 @@ sequelize.
 const models = {
 	player: players(sequelize, DataTypes),
 	command: commands(sequelize, DataTypes),
-	tournamment: tournamments(sequelize, DataTypes),
+	tournament: tournaments(sequelize, DataTypes),
 	user: users(sequelize, DataTypes),
+	playerCommand: playerCommands(sequelize, DataTypes),
 };
 
 Object.keys(models).forEach((key) => {
 	console.log('model ', models[key]);
-  if ('associate' in models[key]) {
-    models[key].associate(models);
-  }
+	if ('associate' in models[key]) {
+		models[key].associate(models);
+	}
 });
 
-sequelize.sync({force: true}); // Delete force true
+sequelize.sync(); // Delete force true
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;

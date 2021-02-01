@@ -11,30 +11,29 @@ const gqlSchema = gql`
 	type User {
 		email: String!
 		password: String!
-		userName: String!
-		type: String!
-		isAuth: Boolean!
+		login: String!
+		role: String!
 	}
 
-	type Tournamment {
+	type Tournament {
 		id: Int!
 		title: String!
 		caption: String!
 		game: String!
 		prize: String!
 		commandSize: Int
-		startDate: Date
-		endDate: Date
+		startDate: String
+		endDate: String
 		commands: [Command]
 	}
 	
 	type Command {
-		id: Int
-		title: String
-		registrationDate: Date
-		tournamment: Tournamment
+		id: Int!
+		title: String!
+		description: String
+		tournament: Tournament
 		players: [Player]
-		capitan: User
+		capitan: Player
 	}
 
 	type Player {
@@ -48,56 +47,64 @@ const gqlSchema = gql`
 	}
 
 	type Query {
-		tournamment(title: String): Tournamment
-		commands(title: String, game: String): [Command]
-		player(name: String): Player
+		tournaments: [Tournament]
+		tournamentByTitle(title: String): Tournament
+		commandByTitle(title: String): [Command] 
+		playerByName(name: String): Player
 		hello: String
 		getUsersByType(type: String): [User]
 	}
 
-	input tournammentInput {
+	input tournamentInput {
 		title: String!
 		caption: String!
 		game: String!
 		prize: String!
 		commandSize: Int
-		startDate: Date
-		endDate: Date
+		startDate: String
+		endDate: String
 	}
 
 	input commandInput {
-		title: String
-		tournammentId: Int
+		title: String!
+		description: String
+		tournamentId: Int!
+		userId: Int!
 	}
 
 	input playerInput {
-		name: String
-		steam: String
-		university: String
-		faculty: String
-		Group: String
-		commandId: Int
-		tournammentId: Int
+		name: String!
+		steam: String!
+		university: String!
+		faculty: String!
+		group: String!
+		userId: Int!
 	}
 
 	input userInput {
 		email: String!
 		password: String!
-		userName: String!
-		type: String!
+		login: String!
 	}
 
 	input authorizeInput {
-		login: String!
+		email: String
+		login: String
 		password: String!
 	}
 
+	type AuthorizeUser {
+		user: User!
+		token: String!
+	}
+
 	type Mutation {
-		createTournamment(input: tournammentInput!): Tournamment!
+		createTournament(input: tournamentInput!): Tournament!
 		createCommand(input: commandInput!): Command!
 		createPlayer(input: playerInput!): Player!
 		registrateUser(input: userInput!): User!
-		authorizeUser(input: authorizeInput!): User!
+		authorizeUser(input: authorizeInput!): AuthorizeUser!
+		changeRole(id: Int!, role: String!): User
 	}
 `;
 

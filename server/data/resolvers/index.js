@@ -1,7 +1,9 @@
-import tournammentResolver from './tournammentResolver.js';
-import commandResolver from './commandResover.js';
-import playerResolver from './playerResolver.js';
-import userResolver from './usersResolver.js';
+import merge from 'deepmerge';
+
+import tournamentResolver from '../modules/tournaments/tournamentResolver.js';
+import commandResolver from '../modules/commands/commandResover.js';
+import playerResolver from '../modules/players/playerResolver.js';
+import userResolver from '../modules/users/usersResolver.js';
 
 const hello = {
 	Query: {
@@ -9,25 +11,14 @@ const hello = {
 	}
 };
 
-/*
- * Query: {
- * ...tournammentResolver.Query,
- * ...hello.Query
- * },
- * Mutation: {
- * ...tournammentResolver.Mutation,
- * ...hello.Mutation
- * },
- */
+const resolver = merge.all([
+	tournamentResolver,
+	commandResolver,
+	playerResolver,
+	userResolver,
+	hello
+]);
 
-const resolver = {
-	...tournammentResolver,
-	...commandResolver,
-	...playerResolver,
-	...userResolver,
-	...hello
-};
-
-console.log(resolver.Query);
+console.log(resolver);
 
 export default resolver;
