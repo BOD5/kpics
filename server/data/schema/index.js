@@ -43,7 +43,7 @@ const gqlSchema = gql`
 		university: String
 		faculty: String
 		Group: String
-		command: Command
+		command: [Command]
 	}
 
 	type Query {

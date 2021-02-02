@@ -1,4 +1,6 @@
 import models from '../index.js';
+import pkg from 'sequelize';
+const { Op } = pkg;
 
 export default {
 	Query: {
@@ -14,7 +16,7 @@ export default {
 			});
 			console.log(' - :12 -> commandIds', commandIds ); // eslint-disable-line no-console
 			return await models.command.findAll({where: {
-				id: { $in: commandIds.commandId }
+				id: { [Op.or]: commandIds }
 			}});
 		},
 	},

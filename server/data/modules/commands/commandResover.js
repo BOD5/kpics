@@ -1,4 +1,6 @@
 import models from '../index.js';
+import pkg from 'sequelize';
+const { Op } = pkg;
 
 export default {
 	Query: {
@@ -13,7 +15,7 @@ export default {
 				return obj.dataValues.playerId;
 			});
 			return await models.player.findAll({where: {
-				id: { $in: playersIds.playerId }
+				id: { [Op.or]:  playersIds }
 			}});
 		},
 		tournament: async (parent, args) => {
