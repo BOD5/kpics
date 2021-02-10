@@ -15,8 +15,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import LogInDialog from './modal/LogIn';
-import Context from '../context';
+import LogInDialog from '../modal/LogIn';
+import Context from '../../context';
 
 const useStyles = makeStyles((theme) => ({
 	root: {

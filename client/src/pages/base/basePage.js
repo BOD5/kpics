@@ -9,9 +9,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import PageShablon from '../../components/PageShablon';
 import { Container } from '@material-ui/core';
 import ContentComponent from '../../components/ContentComponent';
-import TournamentCard from '../../components/TournamentCard';
+import TournamentCard from '../../components/Tournament/TournamentCard';
 
 import img from '../../img/left.jpg';
+import TournamentDetail from '../../components/Tournament/TournamentDetail';
 
 export const BasePage = () => {
 	const tournament = {

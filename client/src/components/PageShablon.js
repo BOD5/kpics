@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import TopBar from './TopBar';
+import TopBar from './menu/TopBar';
 import LeftNavigationPanel from './LeftNavigationPAnel';
 
 

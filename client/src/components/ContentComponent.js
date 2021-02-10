@@ -6,10 +6,13 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Box, Container, Toolbar, Typography } from '@material-ui/core';
 
+import img from '../img/right.jpg';
+import TournamentDetail from './Tournament/TournamentDetail';
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: '100%',
-		backgroundColor: 'blue'
+		backgroundImage: img
 	},
 	back: {
 		padding: theme.spacing(1),
@@ -36,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
 const ContentComponent = (props) => {
 	const classes = useStyles();
 
+	const tournament = {
+		title: 'title',
+		caption: 'caption',
+	};
+
 	return (
 		<div className={classes.root}>
 			<Toolbar />
@@ -44,6 +52,7 @@ const ContentComponent = (props) => {
 					<Paper className={classes.back}>xs=12</Paper>
 				</Grid>
 				<Container  className={classes.content}>
+					<TournamentDetail tournament={tournament}/>						{/* delete */}
 					{props.children}
 				</Container>
 				<Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} />
