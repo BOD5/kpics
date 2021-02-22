@@ -1,14 +1,17 @@
 import React from 'react';
 import { BasePage } from '../pages/base/basePage';
 import Context from '../context';
+import {
+	ApolloProvider
+} from '@apollo/client';
+
+import { client } from '../utils';
+
+
 
 const App = () => {
 	const [isAuth, setAuth] = React.useState(false);
-	const [userData, setData] = React.useState({
-		userName: 'ebb',
-		id: 1,
-		type: 'Admin'
-	});
+	const [userData, setData] = React.useState({});
 	const authUser = {
 		state: {
 			auth: isAuth,
@@ -19,11 +22,13 @@ const App = () => {
 	};
 
 	return (
-		<Context.Provider value={{authUser}}>
-			<div>
-				<BasePage />
-			</div>
-		</Context.Provider>
+		<ApolloProvider client={client}>
+			<Context.Provider value={{ authUser, client }}>
+				<div>
+					<BasePage />
+				</div>
+			</Context.Provider>
+		</ApolloProvider>
 	);
 };
 

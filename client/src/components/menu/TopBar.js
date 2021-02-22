@@ -44,9 +44,11 @@ const useStyles = makeStyles((theme) => ({
 
 const TopBar = (props) => {
 	const classes = useStyles();
+
 	const { authUser } = React.useContext(Context);
 	const auth = authUser.state.auth;
 	const setAuth = authUser.state.setAuth;
+	
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const [showLogin, setShowL] = React.useState(false);

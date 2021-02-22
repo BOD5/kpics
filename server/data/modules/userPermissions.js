@@ -1,15 +1,15 @@
-const playerCommand = (sequelize, DataTypes) => {
-  const PC = sequelize.define(
-    'playerCommand',
+const userPermissions = (sequelize, DataTypes) => {
+  const UP = sequelize.define(
+    'userPermissions',
     {
-      commandId: {
+      userId: {
         type: DataTypes.INTEGER,
         // references: {
         // 	model: models.command, // 'Movies' would also work
         // 	key: 'id'
         // }
       },
-      playerId: {
+      permissionId: {
         type: DataTypes.INTEGER,
         // references: {
         // 	model: models.player, // 'Movies' would also work
@@ -19,7 +19,7 @@ const playerCommand = (sequelize, DataTypes) => {
     }
   );
 
-  return PC;
+  return UP;
 };
 
-export default playerCommand;
+export default userPermissions;
